@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="forma">
+        <div class="form-at">
+            <div class="validate-input-at w-50" data-validate="Обязательное поле">
+                <input class="height" type="number" name="height" placeholder="Высота" />
+                <span class="focus-input-at"></span>
+            </div>
+            <div class="validate-input-at" data-validate="Обязательное поле">
+                <input class="width" type="number" name="width" placeholder="Ширина">
+                <span class="focus-input-at"></span>
+            </div>
+            <div class="validate-input-at w-50" data-validate="Обязательное поле">
+                <input class="email" type="text" name="email-at" placeholder="Ваш телефон или email" />
+                <span class="focus-input-at"></span>
+            </div>
+            <div class="result" name="result"></div>
+            <button id="submit-at" class="form-at-btn">Отправить</button>
+        </div>
+        <div class="result-at"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
