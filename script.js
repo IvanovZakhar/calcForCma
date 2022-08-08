@@ -3,22 +3,39 @@ $(function() {
 	let height = document.querySelector('.width'),
 		width = document.querySelector('.height'),
 		email = document.querySelector('.email'),
-		result = document.querySelector('.result');
+		result = document.querySelector('.result'),
+		checkSpreading = document.querySelector('.spreading__check'),
+		spreadingPrice = {
+			price: +`${document.querySelector('.spreading__price').innerHTML}`,
+			noneCheck: 0,
+			result: null
+		}
+
 
 		width.addEventListener('input', () => {
-			calculate(width, height);
+			calculate(width, height, checked())
 		})
 
 		height.addEventListener('input', () => {
-			calculate(width, height);
+			calculate(width, height, checked())
 
 		})
 
-		function calculate (width, height) {
-			result.innerHTML = `${(width.value * height.value) * 950}`;
+		checkSpreading.addEventListener('click', () => calculate(width, height, checked()))
+
+		function calculate (width, height, checked) {
+			result.innerHTML = `${((width.value * height.value) * 950) + checked }`;
 			
 		}
 
+		function checked (){
+			if(checkSpreading.checked){
+				spreadingPrice.result = spreadingPrice.price
+			}else{
+				spreadingPrice.result = spreadingPrice.noneCheck
+			}
+			return spreadingPrice.result;
+		}
 
 		
 		
@@ -58,25 +75,25 @@ $(function() {
 		});
 		
 	});	
-	function validate(input) {
-		/* Если нужно проверять валидность почты, раскомментируйте строчки ниже */
-		/*
-			if($(input).attr('type') == 'email' || $(input).attr('name') == 'email-at') {
-			if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-			return false;
-			}
-			}
-		*/
-		if($(input).val().trim() == ''){
-			return false;
-		}
-	}
-	function showValidate(input) {
-		var thisAlert = $(input).parent();
-		$(thisAlert).addClass('alert-validate');
-	}
-	function hideValidate(input) {
-		var thisAlert = $(input).parent();
-		$(thisAlert).removeClass('alert-validate');
-	}
+	// function validate(input) {
+	// 	/* Если нужно проверять валидность почты, раскомментируйте строчки ниже */
+	// 	/*
+	// 		if($(input).attr('type') == 'email' || $(input).attr('name') == 'email-at') {
+	// 		if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+	// 		return false;
+	// 		}
+	// 		}
+	// 	*/
+	// 	if($(input).val().trim() == ''){
+	// 		return false;
+	// 	}
+	// }
+	// function showValidate(input) {
+	// 	var thisAlert = $(input).parent();
+	// 	$(thisAlert).addClass('alert-validate');
+	// }
+	// function hideValidate(input) {
+	// 	var thisAlert = $(input).parent();
+	// 	$(thisAlert).removeClass('alert-validate');
+	// }
 });
