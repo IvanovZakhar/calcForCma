@@ -4,37 +4,46 @@ $(function() {
 		width = document.querySelector('.height'),
 		email = document.querySelector('.email'),
 		result = document.querySelector('.result'),
-		checkSpreading = document.querySelector('.spreading__check'),
-		spreadingPrice = {
-			price: +`${document.querySelector('.spreading__price').innerHTML}`,
-			noneCheck: 0,
-			result: null
+		checksSum = [],
+		results = null;
+
+		const checkbox = document.querySelectorAll('.sturdy-add__item');
+
+		checkbox.forEach(item => {item.addEventListener('click', (e) => checked (e.target))})
+
+		width.addEventListener('input', () => calculate(width, height))
+
+		height.addEventListener('input', () => calculate(width, height))
+
+
+		function calculate (width, height) {
+			result.innerHTML = `${((width.value * height.value) * 950) + results}`;
 		}
 
+		
 
-		width.addEventListener('input', () => {
-			calculate(width, height, checked())
-		})
-
-		height.addEventListener('input', () => {
-			calculate(width, height, checked())
-
-		})
-
-		checkSpreading.addEventListener('click', () => calculate(width, height, checked()))
-
-		function calculate (width, height, checked) {
-			result.innerHTML = `${((width.value * height.value) * 950) + checked }`;
+		function checked (check){
+			// Проверяем нажатый чек бокс 
 			
-		}
-
-		function checked (){
-			if(checkSpreading.checked){
-				spreadingPrice.result = spreadingPrice.price
-			}else{
-				spreadingPrice.result = spreadingPrice.noneCheck
+			// Если чек бокс установлен в позиции true
+			if(check.className = 'sturdy-add__check' && check.checked){
+				// Добавляем в массив 'данные ребенка соседа' - дум дерева
+				checksSum.push(+check.nextElementSibling.childNodes[1].innerHTML)
+				// Суммируем полученные данные помещая их в переменную results
+				results = checksSum.reduce((partialSum, a) => partialSum + a, 0);
+				// Запускаем данную функцию, что бы обновить полученные данные
+				calculate(width, height)
 			}
-			return spreadingPrice.result;
+			// Если чек бокс установлен в позиции false
+			else if (check.className = 'sturdy-add__check' && check.checked === false){
+				// C помощью метода indexOf находим номер индекса по 'данным ребенка соседа' - дум дерева 
+				// С помощью метода splice заменяем данные на 0 в найденном индексе
+				checksSum.splice(checksSum.indexOf(+check.nextElementSibling.childNodes[1].innerHTML), 1, 0);
+				// Запускаем данную функции, что бы обновить полученные данные
+				results = checksSum.reduce((partialSum, a) => partialSum + a, 0);
+				calculate(width, height)
+			}
+			
 		}
 
 		

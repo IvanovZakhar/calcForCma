@@ -219,3 +219,38 @@ input.input-at:focus {
 	height: 100%;
 	font-size: 16px;
 }
+
+.product{
+	width: 250px;
+}
+
+.product__name{
+	text-align: center;
+}
+
+.product-img{
+	width: 200px;
+	display: block;
+	margin: 0 auto;
+}
+
+.product__about{
+	text-align: center;
+}
+
+.product__price{
+	text-align: center;
+}
+
+.sturdy-add{
+	display: none;
+}
+
+.sturdy-add__item{
+	display: flex;
+	justify-content: center;
+}
+
+.show{
+	display: block;
+}
